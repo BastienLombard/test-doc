@@ -130,7 +130,7 @@
 <h1>Mesh<a class="headerlink" href="#mesh" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="meshtool.Mesh">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">meshtool.</span></span><span class="sig-name descname"><span class="pre">Mesh</span></span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">meshtool.</span></span><span class="sig-name descname"><span class="pre">Mesh</span></span><a class="headerlink" href="#meshtool.Mesh" title="Link to this definition"></a></dt>
 <dd><p>Mesh representation based on the <cite>meshio.Mesh</cite> object.
 Quad elements are not supported.</p>
 <p>Build a mesh with <a class="reference internal" href="#meshtool.Mesh.from_file" title="meshtool.Mesh.from_file"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_file()</span></code></a> or <a class="reference internal" href="#meshtool.Mesh.from_arrays" title="meshtool.Mesh.from_arrays"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_arrays()</span></code></a>.</p>
@@ -237,7 +237,7 @@ then true m² only if the projection preserves distances.</p>
 <h2>Building<a class="headerlink" href="#building" title="Link to this heading"></a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="meshtool.Mesh.from_file">
-<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.from_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.from_file" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meshtool.Mesh.from_file" title="Link to this definition"></a></dt>
 <dd><p>Read a mesh from a file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -254,7 +254,7 @@ then true m² only if the projection preserves distances.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="meshtool.Mesh.from_arrays">
-<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">from_arrays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connectivity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.from_arrays"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.from_arrays" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">from_arrays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connectivity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meshtool.Mesh.from_arrays" title="Link to this definition"></a></dt>
 <dd><p>Build a triangle mesh from arrays.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -349,7 +349,7 @@ edge of cell <code class="docutils literal notranslate"><span class="pre">i</spa
 
 <dl class="py method">
 <dt class="sig sig-object py" id="meshtool.Mesh.get_lon_lat">
-<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">get_lon_lat</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.get_lon_lat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.get_lon_lat" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">get_lon_lat</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#meshtool.Mesh.get_lon_lat" title="Link to this definition"></a></dt>
 <dd><p>Return the node longitude and latitude (EPSG:4326, degrees).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -363,7 +363,7 @@ edge of cell <code class="docutils literal notranslate"><span class="pre">i</spa
 
 <dl class="py method">
 <dt class="sig sig-object py" id="meshtool.Mesh.reproject">
-<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">reproject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_crs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.reproject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.reproject" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">reproject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_crs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meshtool.Mesh.reproject" title="Link to this definition"></a></dt>
 <dd><p>Transform the node coordinates to <code class="docutils literal notranslate"><span class="pre">new_crs</span></code>, <strong>in place</strong>, and update <code class="docutils literal notranslate"><span class="pre">crs</span></code>.</p>
 <p>Caches are reset. <code class="docutils literal notranslate"><span class="pre">z</span></code> is unchanged.</p>
 </dd></dl>
@@ -373,7 +373,7 @@ edge of cell <code class="docutils literal notranslate"><span class="pre">i</spa
 <h2>Location and interpolation<a class="headerlink" href="#location-and-interpolation" title="Link to this heading"></a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="meshtool.Mesh.barycentric_coordinates">
-<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">barycentric_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_ids</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.barycentric_coordinates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.barycentric_coordinates" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">barycentric_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_ids</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meshtool.Mesh.barycentric_coordinates" title="Link to this definition"></a></dt>
 <dd><p>Barycentric coordinates (alpha, beta, gamma) of the points (x, y) in the given cells,
 i.e. the weights of the cell’s local nodes (0, 1, 2) in this order.
 Degenerate cells give NaN.</p>
@@ -381,7 +381,7 @@ Degenerate cells give NaN.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="meshtool.Mesh.locate">
-<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">locate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">points_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.locate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.locate" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">locate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">points_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meshtool.Mesh.locate" title="Link to this definition"></a></dt>
 <dd><p>Find the triangle containing each point.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -402,20 +402,20 @@ Degenerate cells give NaN.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="meshtool.Mesh.interp_node_data">
-<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">interp_node_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">points_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">nan</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.interp_node_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.interp_node_data" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">interp_node_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">points_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">nan</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meshtool.Mesh.interp_node_data" title="Link to this definition"></a></dt>
 <dd><p>Interpolate node data on the given (x,y) points using barycentric interpolation.
 Points outside the mesh are assigned <code class="docutils literal notranslate"><span class="pre">fill_value</span></code>.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="meshtool.Mesh.cell_to_node">
-<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">cell_to_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_cells</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.cell_to_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.cell_to_node" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">cell_to_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_cells</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meshtool.Mesh.cell_to_node" title="Link to this definition"></a></dt>
 <dd><p>Area-weighted average of cell data onto nodes.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="meshtool.Mesh.node_to_cell">
-<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">node_to_cell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_nodes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.node_to_cell"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.node_to_cell" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">node_to_cell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_nodes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meshtool.Mesh.node_to_cell" title="Link to this definition"></a></dt>
 <dd><p>Average of the node values over the 3 nodes of each cell.</p>
 </dd></dl>
 
@@ -424,13 +424,13 @@ Points outside the mesh are assigned <code class="docutils literal notranslate">
 <h2>Data and physical groups<a class="headerlink" href="#data-and-physical-groups" title="Link to this heading"></a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="meshtool.Mesh.add_cell_data">
-<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">add_cell_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'triangle'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.add_cell_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.add_cell_data" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">add_cell_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'triangle'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meshtool.Mesh.add_cell_data" title="Link to this definition"></a></dt>
 <dd><p>Attach a per-cell field to the mesh, stored in <code class="docutils literal notranslate"><span class="pre">meshio_mesh.cell_data[name]</span></code>.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="meshtool.Mesh.get_physical_group">
-<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">get_physical_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.get_physical_group"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.get_physical_group" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">get_physical_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meshtool.Mesh.get_physical_group" title="Link to this definition"></a></dt>
 <dd><p>Cells of a physical group.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -453,7 +453,7 @@ Points outside the mesh are assigned <code class="docutils literal notranslate">
 <h2>Validation<a class="headerlink" href="#validation" title="Link to this heading"></a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="meshtool.Mesh.check">
-<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.check"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.check" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meshtool.Mesh.check" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>
@@ -461,7 +461,7 @@ Points outside the mesh are assigned <code class="docutils literal notranslate">
 <h2>Writing<a class="headerlink" href="#writing" title="Link to this heading"></a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="meshtool.Mesh.write_gmsh">
-<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">write_gmsh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">binary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.write_gmsh"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.write_gmsh" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">write_gmsh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">binary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meshtool.Mesh.write_gmsh" title="Link to this definition"></a></dt>
 <dd><p>Write the mesh in Gmsh format, with metadata and CRS (<code class="docutils literal notranslate"><span class="pre">Projection</span></code> block).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -477,7 +477,7 @@ then overwritten</strong>).</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="meshtool.Mesh.write_vtk">
-<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">write_vtk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">binary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.write_vtk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.write_vtk" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">write_vtk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">binary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meshtool.Mesh.write_vtk" title="Link to this definition"></a></dt>
 <dd><p>Write the mesh in VTK format (suffix forced to <code class="docutils literal notranslate"><span class="pre">.vtk</span></code>).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -491,13 +491,13 @@ then overwritten</strong>).</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="meshtool.Mesh.write_tolosa">
-<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">write_tolosa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.write_tolosa"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.write_tolosa" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">write_tolosa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meshtool.Mesh.write_tolosa" title="Link to this definition"></a></dt>
 <dd><p>Tolosa format = gmsh 2.2 ASCII.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="meshtool.Mesh.write_ww3">
-<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">write_ww3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_depth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ob_names</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.write_ww3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.write_ww3" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">write_ww3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_depth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ob_names</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meshtool.Mesh.write_ww3" title="Link to this definition"></a></dt>
 <dd><p>Write a WaveWatch III compatible mesh.
 Selected boundary line cells are converted to vertex cells.
 Inspired from matlab code <cite>WW3_mesh_generator.m</cite></p>

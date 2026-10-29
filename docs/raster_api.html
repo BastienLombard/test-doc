@@ -47,6 +47,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Raster</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#meshtool.Raster"><code class="docutils literal notranslate"><span class="pre">Raster</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#meshtool.Raster.data"><code class="docutils literal notranslate"><span class="pre">Raster.data</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Raster.crs"><code class="docutils literal notranslate"><span class="pre">Raster.crs</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#building">Building</a><ul>
@@ -61,7 +62,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#meshtool.Raster.grad_x"><code class="docutils literal notranslate"><span class="pre">Raster.grad_x</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#meshtool.Raster.grad_y"><code class="docutils literal notranslate"><span class="pre">Raster.grad_y</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#meshtool.Raster.gradient"><code class="docutils literal notranslate"><span class="pre">Raster.gradient</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#meshtool.Raster.crs"><code class="docutils literal notranslate"><span class="pre">Raster.crs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">Raster.crs</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a><ul>
@@ -106,17 +107,18 @@
 <h1>Raster<a class="headerlink" href="#raster" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="meshtool.Raster">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">meshtool.</span></span><span class="sig-name descname"><span class="pre">Raster</span></span><a class="reference internal" href="_modules/meshtool/raster.html#Raster"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Raster" title="Link to this definition"></a></dt>
-<dd><p>Raster object (regular 2D grid) with a spatial reference.
-For a bathymetry, by convention the internal z axis is oriented upwards.</p>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">meshtool.</span></span><span class="sig-name descname"><span class="pre">Raster</span></span><a class="headerlink" href="#meshtool.Raster" title="Link to this definition"></a></dt>
+<dd><p>Regular 2D grid (raster) with a CRS, e.g. a bathymetry.</p>
+<p>The internal vertical convention is <strong>z upwards</strong>; <code class="docutils literal notranslate"><span class="pre">z_direction</span></code> only describes. (this is specific to bathymetries)
+the sign convention of the input.</p>
 <p>Build a raster with <code class="xref py py-meth docutils literal notranslate"><span class="pre">from_file()</span></code> or <a class="reference internal" href="#meshtool.Raster.from_arrays" title="meshtool.Raster.from_arrays"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_arrays()</span></code></a>.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="meshtool.Raster.data">
 <span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#meshtool.Raster.data" title="Link to this definition"></a></dt>
-<dd><p>Node coordinates. <code class="docutils literal notranslate"><span class="pre">z</span></code> is filled with 0 if the input points are 2D.</p>
+<dd><p>Values, z upwards, NaN where there is no data. <code class="docutils literal notranslate"><span class="pre">data[0,</span> <span class="pre">0]</span></code> is the south-west pixel.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>(nn, 3) ndarray</p>
+<dd class="field-odd"><p>(ny, nx) float ndarray</p>
 </dd>
 </dl>
 </dd></dl>
@@ -124,14 +126,21 @@ For a bathymetry, by convention the internal z axis is oriented upwards.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">x,</span> <span class="pre">y</span></span></dt>
-<dd></dd></dl>
+<dd><p>Pixel-centre coordinates, increasing and regularly spaced.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(nx,), (ny,)</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">ox,</span> <span class="pre">oy</span></span></dt>
-<dd><dl class="field-list simple">
+<dd><p>Coordinates of the south-west pixel centre.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>(nn,) ndarray</p>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
@@ -139,7 +148,8 @@ For a bathymetry, by convention the internal z axis is oriented upwards.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">nx,</span> <span class="pre">ny</span></span></dt>
-<dd><dl class="field-list simple">
+<dd><p>Number of pixels along x and y.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int</p>
 </dd>
@@ -149,9 +159,21 @@ For a bathymetry, by convention the internal z axis is oriented upwards.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">dx,</span> <span class="pre">dy</span></span></dt>
-<dd><dl class="field-list simple">
+<dd><p>Pixel size in CRS units.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>(nc, 3) ndarray</p>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="meshtool.Raster.crs">
+<span class="sig-name descname"><span class="pre">crs</span></span><a class="headerlink" href="#meshtool.Raster.crs" title="Link to this definition"></a></dt>
+<dd><p>Coordinate reference system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pyproj.CRS or None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -162,7 +184,7 @@ For a bathymetry, by convention the internal z axis is oriented upwards.</p>
 <h2>Building<a class="headerlink" href="#building" title="Link to this heading"></a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="meshtool.Raster.from_arrays">
-<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">from_arrays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'up'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/raster.html#Raster.from_arrays"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Raster.from_arrays" title="Link to this definition"></a></dt>
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">from_arrays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'up'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meshtool.Raster.from_arrays" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>
@@ -205,8 +227,8 @@ For a bathymetry, by convention the internal z axis is oriented upwards.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="meshtool.Raster.crs">
-<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">crs</span></span><a class="headerlink" href="#meshtool.Raster.crs" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id0">
+<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">crs</span></span><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
 <dd><p><code class="docutils literal notranslate"><span class="pre">pyproj.CRS</span></code> or None.</p>
 </dd></dl>
 
@@ -215,41 +237,41 @@ For a bathymetry, by convention the internal z axis is oriented upwards.</p>
 <h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="meshtool.Raster.crop_to_domain">
-<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">crop_to_domain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bounds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs_bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixel_margin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/raster.html#Raster.crop_to_domain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Raster.crop_to_domain" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">crop_to_domain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bounds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs_bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixel_margin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meshtool.Raster.crop_to_domain" title="Link to this definition"></a></dt>
 <dd><p>Crop raster to the extent of a rectangular domain + extra margin
 <code class="docutils literal notranslate"><span class="pre">bounds</span></code> = (xmin, xmax, ymin, ymax), expressed in <code class="docutils literal notranslate"><span class="pre">crs_bounds</span></code> (or in the raster CRS if None).</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="meshtool.Raster.eval_slope">
-<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">eval_slope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/raster.html#Raster.eval_slope"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Raster.eval_slope" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">eval_slope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">point_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meshtool.Raster.eval_slope" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="meshtool.Raster.smooth">
-<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">smooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_smooth</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/raster.html#Raster.smooth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Raster.smooth" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">smooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_smooth</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meshtool.Raster.smooth" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="meshtool.Raster.smooth_copy">
-<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">smooth_copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_smooth</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/raster.html#Raster.smooth_copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Raster.smooth_copy" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">smooth_copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_smooth</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meshtool.Raster.smooth_copy" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="meshtool.Raster.compute_flood_fill">
-<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">compute_flood_fill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ssh_target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/raster.html#Raster.compute_flood_fill"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Raster.compute_flood_fill" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">compute_flood_fill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ssh_target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meshtool.Raster.compute_flood_fill" title="Link to this definition"></a></dt>
 <dd><p>Determine the parts of the terrain that are covered in water, for a given ssh level.
 Flood fill starting from the lowest bathymetry point.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="meshtool.Raster.is_flooded">
-<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">is_flooded</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ssh_target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/raster.html#Raster.is_flooded"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Raster.is_flooded" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">is_flooded</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">point_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ssh_target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meshtool.Raster.is_flooded" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="meshtool.Raster.eval">
-<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">eval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">nan</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'closest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/raster.html#Raster.eval"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Raster.eval" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">eval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">point_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">nan</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'closest'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#meshtool.Raster.eval" title="Link to this definition"></a></dt>
 <dd><p>Bilinear interpolation of the raster at the points (x, y).</p>
 <p>fill_type = ‘value’ or ‘closest’</p>
 </dd></dl>
