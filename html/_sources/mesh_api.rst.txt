@@ -1,0 +1,57 @@
+Mesh
+====
+
+.. currentmodule:: meshtool
+
+.. autoclass:: Mesh
+   :no-members:
+
+Building
+------------
+
+.. automethod:: Mesh.from_file
+.. automethod:: Mesh.from_arrays
+
+Geometric properties
+-----------------------
+
+.. autoattribute:: Mesh.cell_centers
+.. autoattribute:: Mesh.cell_areas
+.. autoattribute:: Mesh.cell_perimeters
+.. autoattribute:: Mesh.cell_neighbors
+.. autoattribute:: Mesh.boundary_edges
+
+Coordinate system
+----------------------
+
+.. autoattribute:: Mesh.crs
+.. automethod:: Mesh.get_lon_lat
+.. automethod:: Mesh.reproject
+
+Location and interpolation
+-----------------------------
+
+.. automethod:: Mesh.barycentric_coordinates
+.. automethod:: Mesh.locate
+.. automethod:: Mesh.interp_node_data
+.. automethod:: Mesh.cell_to_node
+.. automethod:: Mesh.node_to_cell
+
+Data and physical groups
+----------------------------
+
+.. automethod:: Mesh.add_cell_data
+.. automethod:: Mesh.get_physical_group
+
+Validation
+----------
+
+.. automethod:: Mesh.check
+
+Writing
+--------
+
+.. automethod:: Mesh.write_gmsh
+.. automethod:: Mesh.write_vtk
+.. automethod:: Mesh.write_tolosa
+.. automethod:: Mesh.write_ww3

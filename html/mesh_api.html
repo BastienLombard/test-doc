@@ -1,0 +1,540 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mesh &mdash; Meshtool  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Raster" href="raster_api.html" />
+    <link rel="prev" title="Meshtool documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Meshtool
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Python</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Mesh</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#meshtool.Mesh"><code class="docutils literal notranslate"><span class="pre">Mesh</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.node_coords"><code class="docutils literal notranslate"><span class="pre">Mesh.node_coords</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.connectivity"><code class="docutils literal notranslate"><span class="pre">Mesh.connectivity</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.edge_nodes"><code class="docutils literal notranslate"><span class="pre">Mesh.edge_nodes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.physical_names"><code class="docutils literal notranslate"><span class="pre">Mesh.physical_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.metadata"><code class="docutils literal notranslate"><span class="pre">Mesh.metadata</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.meshio_mesh"><code class="docutils literal notranslate"><span class="pre">Mesh.meshio_mesh</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#building">Building</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.from_file"><code class="docutils literal notranslate"><span class="pre">Mesh.from_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.from_arrays"><code class="docutils literal notranslate"><span class="pre">Mesh.from_arrays()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#geometric-properties">Geometric properties</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.cell_centers"><code class="docutils literal notranslate"><span class="pre">Mesh.cell_centers</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.cell_areas"><code class="docutils literal notranslate"><span class="pre">Mesh.cell_areas</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.cell_perimeters"><code class="docutils literal notranslate"><span class="pre">Mesh.cell_perimeters</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.cell_neighbors"><code class="docutils literal notranslate"><span class="pre">Mesh.cell_neighbors</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.boundary_edges"><code class="docutils literal notranslate"><span class="pre">Mesh.boundary_edges</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#coordinate-system">Coordinate system</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.crs"><code class="docutils literal notranslate"><span class="pre">Mesh.crs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.get_lon_lat"><code class="docutils literal notranslate"><span class="pre">Mesh.get_lon_lat()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.reproject"><code class="docutils literal notranslate"><span class="pre">Mesh.reproject()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#location-and-interpolation">Location and interpolation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.barycentric_coordinates"><code class="docutils literal notranslate"><span class="pre">Mesh.barycentric_coordinates()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.locate"><code class="docutils literal notranslate"><span class="pre">Mesh.locate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.interp_node_data"><code class="docutils literal notranslate"><span class="pre">Mesh.interp_node_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.cell_to_node"><code class="docutils literal notranslate"><span class="pre">Mesh.cell_to_node()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.node_to_cell"><code class="docutils literal notranslate"><span class="pre">Mesh.node_to_cell()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#data-and-physical-groups">Data and physical groups</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.add_cell_data"><code class="docutils literal notranslate"><span class="pre">Mesh.add_cell_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.get_physical_group"><code class="docutils literal notranslate"><span class="pre">Mesh.get_physical_group()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#validation">Validation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.check"><code class="docutils literal notranslate"><span class="pre">Mesh.check()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#writing">Writing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.write_gmsh"><code class="docutils literal notranslate"><span class="pre">Mesh.write_gmsh()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.write_vtk"><code class="docutils literal notranslate"><span class="pre">Mesh.write_vtk()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.write_tolosa"><code class="docutils literal notranslate"><span class="pre">Mesh.write_tolosa()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Mesh.write_ww3"><code class="docutils literal notranslate"><span class="pre">Mesh.write_ww3()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="raster_api.html">Raster</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Meshtool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Mesh</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/mesh_api.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mesh">
+<h1>Mesh<a class="headerlink" href="#mesh" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="meshtool.Mesh">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">meshtool.</span></span><span class="sig-name descname"><span class="pre">Mesh</span></span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh" title="Link to this definition"></a></dt>
+<dd><p>Mesh representation based on the <cite>meshio.Mesh</cite> object.
+Quad elements are not supported.</p>
+<p>Build a mesh with <a class="reference internal" href="#meshtool.Mesh.from_file" title="meshtool.Mesh.from_file"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_file()</span></code></a> or <a class="reference internal" href="#meshtool.Mesh.from_arrays" title="meshtool.Mesh.from_arrays"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_arrays()</span></code></a>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="meshtool.Mesh.node_coords">
+<span class="sig-name descname"><span class="pre">node_coords</span></span><a class="headerlink" href="#meshtool.Mesh.node_coords" title="Link to this definition"></a></dt>
+<dd><p>Node coordinates. <code class="docutils literal notranslate"><span class="pre">z</span></code> is filled with 0 if the input points are 2D.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(nn, 3) ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z</span></span></dt>
+<dd><p>Views of the columns of <code class="docutils literal notranslate"><span class="pre">node_coords</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(nn,) ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">nn,</span> <span class="pre">nc,</span> <span class="pre">ne</span></span></dt>
+<dd><p>Number of nodes, triangle and line cells.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="meshtool.Mesh.connectivity">
+<span class="sig-name descname"><span class="pre">connectivity</span></span><a class="headerlink" href="#meshtool.Mesh.connectivity" title="Link to this definition"></a></dt>
+<dd><p>0-based node indices of each triangle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(nc, 3) ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="meshtool.Mesh.edge_nodes">
+<span class="sig-name descname"><span class="pre">edge_nodes</span></span><a class="headerlink" href="#meshtool.Mesh.edge_nodes" title="Link to this definition"></a></dt>
+<dd><p>0-based node indices of each line cell (empty if there is none).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(ne, 2) ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="meshtool.Mesh.physical_names">
+<span class="sig-name descname"><span class="pre">physical_names</span></span><a class="headerlink" href="#meshtool.Mesh.physical_names" title="Link to this definition"></a></dt>
+<dd><p>Mapping from physical group name to the list of its <cite>(dim, tag)</cite> pairs, as read
+from the <cite>$PhysicalNames</cite> section of the file. A name shared by several physical
+groups maps to several pairs. Empty if the section is absent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[str, list[tuple[int, int]]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="meshtool.Mesh.metadata">
+<span class="sig-name descname"><span class="pre">metadata</span></span><a class="headerlink" href="#meshtool.Mesh.metadata" title="Link to this definition"></a></dt>
+<dd><p>Custom Gmsh blocks, preserved when writing a <code class="docutils literal notranslate"><span class="pre">.msh</span></code> file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[str, str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="meshtool.Mesh.meshio_mesh">
+<span class="sig-name descname"><span class="pre">meshio_mesh</span></span><a class="headerlink" href="#meshtool.Mesh.meshio_mesh" title="Link to this definition"></a></dt>
+<dd><p>Underlying mesh object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>meshio.Mesh</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p><strong>Geometry depends on the CRS.</strong> With a geographic CRS (lon/lat in degrees),
+areas and perimeters are computed on the sphere from 3D coordinates, while point
+location and interpolation are done in the (lon, lat) plane. With a projected CRS
+or <code class="docutils literal notranslate"><span class="pre">crs=None</span></code>, everything is planar, in the units of the coordinates: areas are
+then true m² only if the projection preserves distances.</p>
+<p>The antimeridian is not handled: a mesh crossing it is not supported.</p>
+</dd></dl>
+
+<section id="building">
+<h2>Building<a class="headerlink" href="#building" title="Link to this heading"></a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="meshtool.Mesh.from_file">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.from_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.from_file" title="Link to this definition"></a></dt>
+<dd><p>Read a mesh from a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file</strong> (<em>str</em><em> or </em><em>Path</em>) – Mesh file.</p></li>
+<li><p><strong>crs</strong> (<em>pyproj.CRS</em><em>, </em><em>EPSG code</em><em>, </em><em>WKT string</em><em> or </em><em>None</em>) – CRS of the mesh. If given, it overrides the one stored in the file.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#meshtool.Mesh" title="meshtool.Mesh">Mesh</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="meshtool.Mesh.from_arrays">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">from_arrays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connectivity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.from_arrays"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.from_arrays" title="Link to this definition"></a></dt>
+<dd><p>Build a triangle mesh from arrays.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node_coords</strong> (<em>array_like</em><em>, </em><em>shape</em><em> (</em><em>nn</em><em>, </em><em>2</em><em>) or </em><em>(</em><em>nn</em><em>, </em><em>3</em><em>)</em>) – Node coordinates.</p></li>
+<li><p><strong>connectivity</strong> (<em>array_like</em><em> of </em><em>int</em><em>, </em><em>shape</em><em> (</em><em>nc</em><em>, </em><em>3</em><em>)</em>) – 0-based node indices of each triangle.</p></li>
+<li><p><strong>crs</strong> (<em>pyproj.CRS</em><em>, </em><em>EPSG code</em><em>, </em><em>WKT string</em><em> or </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#meshtool.Mesh" title="meshtool.Mesh">Mesh</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="geometric-properties">
+<h2>Geometric properties<a class="headerlink" href="#geometric-properties" title="Link to this heading"></a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="meshtool.Mesh.cell_centers">
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">cell_centers</span></span><a class="headerlink" href="#meshtool.Mesh.cell_centers" title="Link to this definition"></a></dt>
+<dd><p>Center of gravity of each triangle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(nc, 2) ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="meshtool.Mesh.cell_areas">
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">cell_areas</span></span><a class="headerlink" href="#meshtool.Mesh.cell_areas" title="Link to this definition"></a></dt>
+<dd><p>Triangle areas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(nc,) ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="meshtool.Mesh.cell_perimeters">
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">cell_perimeters</span></span><a class="headerlink" href="#meshtool.Mesh.cell_perimeters" title="Link to this definition"></a></dt>
+<dd><p>Triangle perimeters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(nc,) ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="meshtool.Mesh.cell_neighbors">
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">cell_neighbors</span></span><a class="headerlink" href="#meshtool.Mesh.cell_neighbors" title="Link to this definition"></a></dt>
+<dd><p>Neighbor cells. <code class="docutils literal notranslate"><span class="pre">cell_neighbors[k,</span> <span class="pre">i]</span></code> is the cell sharing the
+edge of cell <code class="docutils literal notranslate"><span class="pre">i</span></code> opposite to its local node <code class="docutils literal notranslate"><span class="pre">k</span></code>, or -1 on the boundary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(3, nc) int ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="meshtool.Mesh.boundary_edges">
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">boundary_edges</span></span><a class="headerlink" href="#meshtool.Mesh.boundary_edges" title="Link to this definition"></a></dt>
+<dd><p>Edges belonging to a single triangle (mesh boundary), and their triangle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>edge_nodes</strong> (<em>(nb, 2) int ndarray</em>) – 0-based node indices of each boundary edge. The orientation of the triangle is kept.</p></li>
+<li><p><strong>cell_ids</strong> (<em>(nb,) int ndarray</em>) – Triangle owning each edge.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="coordinate-system">
+<h2>Coordinate system<a class="headerlink" href="#coordinate-system" title="Link to this heading"></a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="meshtool.Mesh.crs">
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">crs</span></span><a class="headerlink" href="#meshtool.Mesh.crs" title="Link to this definition"></a></dt>
+<dd><p>Coordinate reference system of the mesh.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">pyproj.CRS</span></code> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="meshtool.Mesh.get_lon_lat">
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">get_lon_lat</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.get_lon_lat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.get_lon_lat" title="Link to this definition"></a></dt>
+<dd><p>Return the node longitude and latitude (EPSG:4326, degrees).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lon, lat</strong> – Views of <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> if the mesh CRS is geographic, new arrays otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>(nn,) ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="meshtool.Mesh.reproject">
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">reproject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_crs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.reproject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.reproject" title="Link to this definition"></a></dt>
+<dd><p>Transform the node coordinates to <code class="docutils literal notranslate"><span class="pre">new_crs</span></code>, <strong>in place</strong>, and update <code class="docutils literal notranslate"><span class="pre">crs</span></code>.</p>
+<p>Caches are reset. <code class="docutils literal notranslate"><span class="pre">z</span></code> is unchanged.</p>
+</dd></dl>
+
+</section>
+<section id="location-and-interpolation">
+<h2>Location and interpolation<a class="headerlink" href="#location-and-interpolation" title="Link to this heading"></a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="meshtool.Mesh.barycentric_coordinates">
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">barycentric_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_ids</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.barycentric_coordinates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.barycentric_coordinates" title="Link to this definition"></a></dt>
+<dd><p>Barycentric coordinates (alpha, beta, gamma) of the points (x, y) in the given cells,
+i.e. the weights of the cell’s local nodes (0, 1, 2) in this order.
+Degenerate cells give NaN.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="meshtool.Mesh.locate">
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">locate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">points_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.locate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.locate" title="Link to this definition"></a></dt>
+<dd><p>Find the triangle containing each point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>array_like</em>) – Point coordinates, expressed in <code class="docutils literal notranslate"><span class="pre">points_crs</span></code> (or in the mesh CRS if None).</p></li>
+<li><p><strong>y</strong> (<em>array_like</em>) – Point coordinates, expressed in <code class="docutils literal notranslate"><span class="pre">points_crs</span></code> (or in the mesh CRS if None).</p></li>
+<li><p><strong>points_crs</strong> (<em>Any format</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>cell_ids</strong> – Cell index containing each point, or -1 if outside the mesh.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="meshtool.Mesh.interp_node_data">
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">interp_node_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">points_crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">nan</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.interp_node_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.interp_node_data" title="Link to this definition"></a></dt>
+<dd><p>Interpolate node data on the given (x,y) points using barycentric interpolation.
+Points outside the mesh are assigned <code class="docutils literal notranslate"><span class="pre">fill_value</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="meshtool.Mesh.cell_to_node">
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">cell_to_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_cells</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.cell_to_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.cell_to_node" title="Link to this definition"></a></dt>
+<dd><p>Area-weighted average of cell data onto nodes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="meshtool.Mesh.node_to_cell">
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">node_to_cell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_nodes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.node_to_cell"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.node_to_cell" title="Link to this definition"></a></dt>
+<dd><p>Average of the node values over the 3 nodes of each cell.</p>
+</dd></dl>
+
+</section>
+<section id="data-and-physical-groups">
+<h2>Data and physical groups<a class="headerlink" href="#data-and-physical-groups" title="Link to this heading"></a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="meshtool.Mesh.add_cell_data">
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">add_cell_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'triangle'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.add_cell_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.add_cell_data" title="Link to this definition"></a></dt>
+<dd><p>Attach a per-cell field to the mesh, stored in <code class="docutils literal notranslate"><span class="pre">meshio_mesh.cell_data[name]</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="meshtool.Mesh.get_physical_group">
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">get_physical_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.get_physical_group"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.get_physical_group" title="Link to this definition"></a></dt>
+<dd><p>Cells of a physical group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Physical group name. A name shared by several tags is fully handled.</p></li>
+<li><p><strong>cell_type</strong> (<em>{&quot;triangle&quot;</em><em>, </em><em>&quot;line&quot;</em><em>, </em><em>...</em><em>}</em>) – Cell type to extract.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Node indices of the selected cells (k = 3 for triangles, 2 for lines).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(n, k) int ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="validation">
+<h2>Validation<a class="headerlink" href="#validation" title="Link to this heading"></a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="meshtool.Mesh.check">
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.check"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.check" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="writing">
+<h2>Writing<a class="headerlink" href="#writing" title="Link to this heading"></a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="meshtool.Mesh.write_gmsh">
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">write_gmsh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">binary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.write_gmsh"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.write_gmsh" title="Link to this definition"></a></dt>
+<dd><p>Write the mesh in Gmsh format, with metadata and CRS (<code class="docutils literal notranslate"><span class="pre">Projection</span></code> block).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em><em> or </em><em>Path</em><em>, </em><em>optional</em>) – Output file. Defaults to the file the mesh was read from (<strong>which is
+then overwritten</strong>).</p></li>
+<li><p><strong>version</strong> (<em>{2.2</em><em>, </em><em>4.1}</em>)</p></li>
+<li><p><strong>binary</strong> (<em>bool</em>) – Binary or ASCII encoding.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="meshtool.Mesh.write_vtk">
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">write_vtk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">binary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.write_vtk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.write_vtk" title="Link to this definition"></a></dt>
+<dd><p>Write the mesh in VTK format (suffix forced to <code class="docutils literal notranslate"><span class="pre">.vtk</span></code>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em><em> or </em><em>Path</em><em>, </em><em>optional</em>) – Output file. Defaults to the file the mesh was read from.</p></li>
+<li><p><strong>binary</strong> (<em>bool</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="meshtool.Mesh.write_tolosa">
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">write_tolosa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.write_tolosa"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.write_tolosa" title="Link to this definition"></a></dt>
+<dd><p>Tolosa format = gmsh 2.2 ASCII.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="meshtool.Mesh.write_ww3">
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">write_ww3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_depth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ob_names</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/mesh.html#Mesh.write_ww3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Mesh.write_ww3" title="Link to this definition"></a></dt>
+<dd><p>Write a WaveWatch III compatible mesh.
+Selected boundary line cells are converted to vertex cells.
+Inspired from matlab code <cite>WW3_mesh_generator.m</cite></p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Meshtool documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="raster_api.html" class="btn btn-neutral float-right" title="Raster" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Bastien Lombard.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,290 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raster &mdash; Meshtool  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Mesh" href="mesh_api.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Meshtool
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Python</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mesh_api.html">Mesh</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Raster</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#meshtool.Raster"><code class="docutils literal notranslate"><span class="pre">Raster</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Raster.data"><code class="docutils literal notranslate"><span class="pre">Raster.data</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#building">Building</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Raster.from_arrays"><code class="docutils literal notranslate"><span class="pre">Raster.from_arrays()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#properties">Properties</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Raster.res_x"><code class="docutils literal notranslate"><span class="pre">Raster.res_x</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Raster.res_y"><code class="docutils literal notranslate"><span class="pre">Raster.res_y</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Raster.res"><code class="docutils literal notranslate"><span class="pre">Raster.res</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Raster.nodata_mask"><code class="docutils literal notranslate"><span class="pre">Raster.nodata_mask</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Raster.grad_x"><code class="docutils literal notranslate"><span class="pre">Raster.grad_x</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Raster.grad_y"><code class="docutils literal notranslate"><span class="pre">Raster.grad_y</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Raster.gradient"><code class="docutils literal notranslate"><span class="pre">Raster.gradient</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Raster.crs"><code class="docutils literal notranslate"><span class="pre">Raster.crs</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Raster.crop_to_domain"><code class="docutils literal notranslate"><span class="pre">Raster.crop_to_domain()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Raster.eval_slope"><code class="docutils literal notranslate"><span class="pre">Raster.eval_slope()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Raster.smooth"><code class="docutils literal notranslate"><span class="pre">Raster.smooth()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Raster.smooth_copy"><code class="docutils literal notranslate"><span class="pre">Raster.smooth_copy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Raster.compute_flood_fill"><code class="docutils literal notranslate"><span class="pre">Raster.compute_flood_fill()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Raster.is_flooded"><code class="docutils literal notranslate"><span class="pre">Raster.is_flooded()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meshtool.Raster.eval"><code class="docutils literal notranslate"><span class="pre">Raster.eval()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Meshtool</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Raster</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/raster_api.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="raster">
+<h1>Raster<a class="headerlink" href="#raster" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="meshtool.Raster">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">meshtool.</span></span><span class="sig-name descname"><span class="pre">Raster</span></span><a class="reference internal" href="_modules/meshtool/raster.html#Raster"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Raster" title="Link to this definition"></a></dt>
+<dd><p>Raster object (regular 2D grid) with a spatial reference.
+For a bathymetry, by convention the internal z axis is oriented upwards.</p>
+<p>Build a raster with <code class="xref py py-meth docutils literal notranslate"><span class="pre">from_file()</span></code> or <a class="reference internal" href="#meshtool.Raster.from_arrays" title="meshtool.Raster.from_arrays"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_arrays()</span></code></a>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="meshtool.Raster.data">
+<span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#meshtool.Raster.data" title="Link to this definition"></a></dt>
+<dd><p>Node coordinates. <code class="docutils literal notranslate"><span class="pre">z</span></code> is filled with 0 if the input points are 2D.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(nn, 3) ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">x,</span> <span class="pre">y</span></span></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">ox,</span> <span class="pre">oy</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(nn,) ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">nx,</span> <span class="pre">ny</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">dx,</span> <span class="pre">dy</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(nc, 3) ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<section id="building">
+<h2>Building<a class="headerlink" href="#building" title="Link to this heading"></a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="meshtool.Raster.from_arrays">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">from_arrays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'up'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/raster.html#Raster.from_arrays"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Raster.from_arrays" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading"></a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="meshtool.Raster.res_x">
+<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">res_x</span></span><a class="headerlink" href="#meshtool.Raster.res_x" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="meshtool.Raster.res_y">
+<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">res_y</span></span><a class="headerlink" href="#meshtool.Raster.res_y" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="meshtool.Raster.res">
+<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">res</span></span><a class="headerlink" href="#meshtool.Raster.res" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="meshtool.Raster.nodata_mask">
+<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">nodata_mask</span></span><a class="headerlink" href="#meshtool.Raster.nodata_mask" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="meshtool.Raster.grad_x">
+<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">grad_x</span></span><a class="headerlink" href="#meshtool.Raster.grad_x" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="meshtool.Raster.grad_y">
+<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">grad_y</span></span><a class="headerlink" href="#meshtool.Raster.grad_y" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="meshtool.Raster.gradient">
+<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">gradient</span></span><a class="headerlink" href="#meshtool.Raster.gradient" title="Link to this definition"></a></dt>
+<dd><p>Gradient norm. Not cached (only grad_x and grad_y are).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="meshtool.Raster.crs">
+<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">crs</span></span><a class="headerlink" href="#meshtool.Raster.crs" title="Link to this definition"></a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">pyproj.CRS</span></code> or None.</p>
+</dd></dl>
+
+</section>
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="meshtool.Raster.crop_to_domain">
+<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">crop_to_domain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bounds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crs_bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixel_margin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/raster.html#Raster.crop_to_domain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Raster.crop_to_domain" title="Link to this definition"></a></dt>
+<dd><p>Crop raster to the extent of a rectangular domain + extra margin
+<code class="docutils literal notranslate"><span class="pre">bounds</span></code> = (xmin, xmax, ymin, ymax), expressed in <code class="docutils literal notranslate"><span class="pre">crs_bounds</span></code> (or in the raster CRS if None).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="meshtool.Raster.eval_slope">
+<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">eval_slope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/raster.html#Raster.eval_slope"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Raster.eval_slope" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="meshtool.Raster.smooth">
+<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">smooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_smooth</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/raster.html#Raster.smooth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Raster.smooth" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="meshtool.Raster.smooth_copy">
+<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">smooth_copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_smooth</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/raster.html#Raster.smooth_copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Raster.smooth_copy" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="meshtool.Raster.compute_flood_fill">
+<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">compute_flood_fill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ssh_target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/raster.html#Raster.compute_flood_fill"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Raster.compute_flood_fill" title="Link to this definition"></a></dt>
+<dd><p>Determine the parts of the terrain that are covered in water, for a given ssh level.
+Flood fill starting from the lowest bathymetry point.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="meshtool.Raster.is_flooded">
+<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">is_flooded</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ssh_target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/raster.html#Raster.is_flooded"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Raster.is_flooded" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="meshtool.Raster.eval">
+<span class="sig-prename descclassname"><span class="pre">Raster.</span></span><span class="sig-name descname"><span class="pre">eval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">nan</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'closest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/meshtool/raster.html#Raster.eval"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#meshtool.Raster.eval" title="Link to this definition"></a></dt>
+<dd><p>Bilinear interpolation of the raster at the points (x, y).</p>
+<p>fill_type = ‘value’ or ‘closest’</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="mesh_api.html" class="btn btn-neutral float-left" title="Mesh" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Bastien Lombard.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

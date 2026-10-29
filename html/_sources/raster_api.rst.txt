@@ -1,0 +1,35 @@
+Raster
+====
+
+.. currentmodule:: meshtool
+
+.. autoclass:: Raster
+   :no-members:
+
+Building
+------------
+
+.. automethod:: Raster.from_file
+.. automethod:: Raster.from_arrays
+
+Properties
+------------
+
+.. autoattribute:: Raster.res_x
+.. autoattribute:: Raster.res_y
+.. autoattribute:: Raster.res
+.. autoattribute:: Raster.nodata_mask
+.. autoattribute:: Raster.grad_x
+.. autoattribute:: Raster.grad_y
+.. autoattribute:: Raster.gradient
+.. autoattribute:: Raster.crs
+
+Methods
+------------
+.. automethod:: Raster.crop_to_domain
+.. automethod:: Raster.eval_slope
+.. automethod:: Raster.smooth
+.. automethod:: Raster.smooth_copy
+.. automethod:: Raster.compute_flood_fill
+.. automethod:: Raster.is_flooded
+.. automethod:: Raster.eval
